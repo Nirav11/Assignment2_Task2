@@ -15,7 +15,7 @@
 
       // If CSV files are not on the same domain as your website, a CORS enabled server
       // or a proxy is required.
-     var url ="https://raw.githubusercontent.com/orhuna/WebGIS_SLU_M1/main/Module%202/stl_crime_wgs_84.csv";
+     var url = "https://raw.githubusercontent.com/orhuna/WebGIS_SLU_M1/main/Module%202/stl_crime_wgs_84.csv";
      esriConfig.request.corsEnabledServers.push('https://rawgit.com');
 
       // Paste the url into a browser's address bar to download and view the attributes
@@ -26,13 +26,13 @@
       // * time - the time of the event
 
         const template = {
-          title: "Crime in Saint Louis",
-          content: "Crime {crime} at {ILEADSStreet} at {Longitude},{Latitude}."
+          title: "Saint Louis Crime",
+          content: "Crime {Crime} at {ILEADSStreet} at {Longitude}, {Latitude}."
         };
 
         const csvLayer = new CSVLayer({
           url: url,
-          copyright: "USGS Earthquakes",
+          copyright: "Crime at Saint Louis",
           popupTemplate: template
         });
 
@@ -53,7 +53,7 @@
 
       var view = new MapView({
         container: "viewDiv",
-        center: [-90.1994,38.6270],
+        center: [-90.1994,38.6270,38.6270],
         zoom: 12,
         map: map
       });
