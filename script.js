@@ -1,4 +1,3 @@
-      
 require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/geometry/Point", "esri/Camera"], (
     WebScene,
     CSVLayer,
@@ -10,7 +9,7 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
 
     const template = {
       title: "Crime in Saint Louis",
-      content: "Crime {Crime} occured at {ILEADSStreet} with {Latitude} and {Longitude}."
+      content: "Crime {Crime} occurred at {ILEADSStreet} with {Latitude} and {Longitude}."
     };
 
     const csvLayer = new CSVLayer({
@@ -19,6 +18,7 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
       popupTemplate: template
     });
 
+    // Updated renderer for light blue, filled markers
     csvLayer.renderer = {
       type: "simple",
       symbol: {
@@ -26,14 +26,8 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
         symbolLayers: [{
           type: "icon",
           resource: { primitive: "circle" },
-          material: { color: [255, 0, 0, 1] }, // Changed color to red
-          size: 5
-        }, {
-          type: "icon",
-          resource: { primitive: "circle" },
-          material: { color: [0, 128, 255, 0] },
-          outline: { color: [0, 128, 255, 0.6], size: 1 }, // Changed outline color to red
-          size: 25
+          material: { color: [173, 216, 230, 1] }, // Light blue color
+          size: 4 // Reduced size
         }]
       }
     };
@@ -56,17 +50,17 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
         color: "#ffffff"
       },
       camera: new Camera({
-        position: new Point({ // Sets the initial position to St. Louis
-          x: -90.1994,
-          y: 38.6270,
-          z: 700000 // Adjust this value as needed to change zoom level
+        position: new Point({
+          x: -90.1994, // St. Louis longitude
+          y: 38.6270,  // St. Louis latitude
+          z: 15000     // Closer initial zoom level
         }),
         heading: 0,
         tilt: 0
       }),
       constraints: {
         altitude: {
-          min: 700000
+          min: 15000 // Allows closer zooming
         }
       },
       environment: {
@@ -80,6 +74,3 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
       }
     });
   });
-
-
-
