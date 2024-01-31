@@ -54,7 +54,7 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
         position: new Point({
           x: -90.1994, // St. Louis longitude
           y: 38.6270,  // St. Louis latitude
-          z: 15000     // Closer initial zoom level
+          z: 17000     // Closer initial zoom level
         }),
         heading: 0,
         tilt: 0
