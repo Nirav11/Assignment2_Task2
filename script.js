@@ -18,7 +18,6 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
       popupTemplate: template
     });
 
-    // Updated renderer for light blue, filled markers
     csvLayer.renderer = {
       type: "simple",
       symbol: {
@@ -32,7 +31,9 @@ require(["esri/WebScene", "esri/layers/CSVLayer", "esri/views/SceneView", "esri/
       }
     };
 
+    // Updated WebScene with dark gray basemap
     const map = new WebScene({
+      basemap: "dark-gray", // Set basemap to dark gray
       portalItem: {
         id: "a467ef1140de4e88acf34d38df9fb869"
       }
